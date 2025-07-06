@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Link para o arquivo CSS compartilhado -->
+    <link rel="stylesheet" href="css/css_compartilhado.css">
+    <!-- Link para o arquivo CSS específico da página -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Link para o Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Início</title>
+</head>
+<body>
+    <!-- Início da barra de navegação principal -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo do Grupo Politécnico -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo.png" alt="Grupo Politécnico Logo">
+                </div>
+                <div class="logo-text">
+                    <span class="grupo">GRUPO</span>
+                    <span class="politecnico">POLITÉCNICO</span>
+                </div>
+            </a>
+
+            <!-- Botão para abrir o menu no mobile (três linhas) -->
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu de navegação principal -->
+            <ul class="nav-menu" id="navMenu">
+                <!-- Item Home -->
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Início</a>
+                </li>
+
+                <!-- Dropdown Unidades -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event, this); toggleMobileDropdown(event, this)">
+                        Unidades<span class="dropdown-arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Ensino</div>
+                        <!-- Opções de Ensino -->
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏛️</div>
+                            Universidades
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏫</div>
+                            Institutos
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🎓</div>
+                            Escolas Secundárias
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">📚</div>
+                            Centro Educativo
+                        </a>
+                        
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header">Outras Áreas</div>
+                        <!-- Outras áreas do grupo -->
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">💻</div>
+                            IST - Tecnologia
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🤝</div>
+                            FUNDE - Social
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏃</div>
+                            Clube de Desporto
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">📊</div>
+                            IPC - Projetos
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Dropdown Instituição -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event, this); toggleMobileDropdown(event, this)">
+                        Instituição<span class="dropdown-arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <!-- Opções da instituição -->
+                        <a href="sobre.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">ℹ️</div>
+                            Sobre nós
+                        </a>
+                        <a href="estrutura.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">🌐</div>
+                            Estrutura Orgânica
+                        </a>
+                        <a href="galeria.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">🖼️</div>
+                            Nossa Galeria
+                        </a>
+                        <a href="emprego.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">💼</div>
+                            Ofertas de Emprego
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Item Eventos -->
+                <li class="nav-item">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                </li>
+
+                <!-- Botão de chamada para Notícias -->
+                <li class="nav-item">
+                    <a href="notícias.html" class="nav-link cta-button">Notícias</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Fim da barra de navegação principal -->
+
+     <!-- Seção do Carrossel -->
+    <div class="carousel-container">
+        <div class="carousel-slides fade-transition" id="carouselSlides">
+            <!-- Adicione suas imagens aqui -->
+            <div class="slide active">
+                <img src="assets/images/slide 1.jpg" alt="Imagem 1">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1 class="welcome-title">Bem-vindos ao Site Oficial do Grupo Politécnico</h1>
+                        <p class="welcome-subtitle">Excelência em Educação, Inovação e Transformação Social</p>
+                        <div class="buttons-container">
+                            <a href="#" class="btn btn-primary">Saber Mais</a>
+                            <a href="#" class="btn btn-secondary">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/slide 2.jpg" alt="Imagem 2">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1 class="welcome-title">Formamos o Futuro de Moçambique</h1>
+                        <p class="welcome-subtitle">Conectando Conhecimento, Tecnologia e Oportunidades</p>
+                        <div class="buttons-container">
+                            <a href="#" class="btn btn-primary">Saber Mais</a>
+                            <a href="#" class="btn btn-secondary">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/slide 3.jpg" alt="Imagem 3">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1 class="welcome-title">Juntos Construímos o Amanhã</h1>
+                        <p class="welcome-subtitle">Uma Comunidade de Aprendizado e Crescimento Contínuo</p>
+                        <div class="buttons-container">
+                            <a href="#" class="btn btn-primary">Saber Mais</a>
+                            <a href="#" class="btn btn-secondary">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-nav prev" onclick="changeSlide(-1)">‹</button>
+        <button class="carousel-nav next" onclick="changeSlide(1)">›</button>
+
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="currentSlide(1)"></span>
+            <span class="indicator" onclick="currentSlide(2)"></span>
+            <span class="indicator" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+    <!-- Corpo do site -->
+    <main>
+    <!-- Seção de Compromisso -->
+    <section class="compromisso-border">
+    <div class="compromisso-section">
+        <h2 class="section-title">Nosso <span class="highlight">Compromisso</span></h2>
+        
+        <div class="compromisso-grid">
+            <div class="compromisso-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,3L1,9L12,15L21,9V16H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                    </svg>
+                </div>
+                <h3 class="card-title">Educação</h3>
+                <p class="card-description">
+                    Oferecemos educação de qualidade que forma profissionais preparados para o sucesso e o futuro.
+                </p>
+            </div>
+
+            <div class="compromisso-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,2A7,7 0 0,1 19,9C19,11.38 17.81,13.47 16,14.74V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V14.74C6.19,13.47 5,11.38 5,9A7,7 0 0,1 12,2M9,21V20H15V21A1,1 0 0,1 14,22H10A1,1 0 0,1 9,21M12,4A5,5 0 0,0 7,9C7,10.89 8.1,12.57 9.79,13.43L10,13.54V16H14V13.54L14.21,13.43C15.9,12.57 17,10.89 17,9A5,5 0 0,0 12,4Z" />
+                    </svg>
+                </div>
+                <h3 class="card-title">Inovação</h3>
+                <p class="card-description">
+                    Inovamos com tecnologia e novas práticas, preparando alunos para liderar e criar mudanças.
+                </p>
+            </div>
+
+            <div class="compromisso-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                    </svg>
+                </div>
+                <h3 class="card-title">Desenvolvimento</h3>
+                <p class="card-description">
+                    Promovemos o crescimento contínuo, capacitando nossos alunos a transformar suas vidas e a sociedade.
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+     <!-- Quem Somos -->
+    <section class="quem-somos">
+        <h2>Quem Somos</h2>
+        <p>Somos uma instituição de ensino dedicada à formação de profissionais altamente capacitados, com foco em inovação e desenvolvimento sustentável.</p>
+    </section>
+  
+    <!-- Seção visão, missão, valores -->
+    <section class="container-border">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="left-section">
+                <div class="company-logo">
+                    <h1>Grupo Politécnico</h1>
+                    <p>Educação, Inovação e Desenvolvimento</p>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="transcom-carousel-container">
+                    <button class="transcom-carousel-nav prev" onclick="transcomChangeSlide(-1)">‹</button>
+                    <div class="transcom-carousel-content">
+                        <div class="transcom-carousel-slide active">
+                            <div class="transcom-slide-header">
+                                <div class="transcom-slide-icon visao">V</div>
+                                <h2 class="transcom-slide-title">Visão</h2>
+                            </div>
+                            <div class="transcom-slide-content">
+                                "Baseando-se na congregação de valências e de esforços, técnicos e financeiros, das empresas que a integram, tornar-se, a médio/longo prazo, numa instituição de referência, no país, nas áreas dos Transportes, das Telecomunicações e da Informática."
+                            </div>
+                        </div>
+                        <div class="transcom-carousel-slide">
+                            <div class="transcom-slide-header">
+                                <div class="transcom-slide-icon missao">M</div>
+                                <h2 class="transcom-slide-title">Missão</h2>
+                            </div>
+                            <div class="transcom-slide-content">
+                                "Promover a excelência na formação profissional, consultoria especializada e auditoria nos sectores de transportes e comunicações, contribuindo para o desenvolvimento sustentável e a inovação tecnológica em Moçambique."
+                            </div>
+                        </div>
+                        <div class="transcom-carousel-slide">
+                            <div class="transcom-slide-header">
+                                <div class="transcom-slide-icon valores">V</div>
+                                <h2 class="transcom-slide-title">Valores</h2>
+                            </div>
+                            <div class="transcom-slide-content">
+                                <strong>Excelência</strong> - Compromisso com a qualidade superior em todos os serviços.<br><br>
+                                <strong>Inovação</strong> - Adopção de tecnologias e metodologias modernas.<br><br>
+                                <strong>Integridade</strong> - Transparência e ética em todas as operações.<br><br>
+                                <strong>Colaboração</strong> - Trabalho em equipa e parcerias estratégicas.
+                            </div>
+                        </div>
+                    </div>
+                    <button class="transcom-carousel-nav next" onclick="transcomChangeSlide(1)">›</button>
+                </div>
+                <div class="transcom-carousel-indicators">
+                    <div class="transcom-indicator active" onclick="transcomGoToSlide(0)"></div>
+                    <div class="transcom-indicator" onclick="transcomGoToSlide(1)"></div>
+                    <div class="transcom-indicator" onclick="transcomGoToSlide(2)"></div>
+                </div>
+                <div class="transcom-progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+    </section>
+   
+    <!--Seção galeria-->
+     <section class="py-5 bg-light">
+        <div class="container-gallery">
+            <div class="text-center mb-5 fade-up">
+                <h2 class="display-5 fw-bold">
+                    <span class="text-primary">A Nossa Galeria</span> Fotos & Vídeos
+                </h2>
+                <div class="rounded-circle d-inline-flex align-items-center justify-content-center mt-3 icon-container">
+                    <i class="fas fa-images fs-3 text-white"></i>
+                </div>
+            </div>
+
+            <div class="row g-3 fade-up">
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=1" class="img-fluid rounded gallery-item" alt="Galeria 1">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=2" class="img-fluid rounded gallery-item" alt="Galeria 2">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=3" class="img-fluid rounded gallery-item" alt="Galeria 3">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=4" class="img-fluid rounded gallery-item" alt="Galeria 4">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=5" class="img-fluid rounded gallery-item" alt="Galeria 5">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <img src="https://picsum.photos/400/300?random=6" class="img-fluid rounded gallery-item" alt="Galeria 6">
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg">Ver mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Galeria -->
+    <div class="modal" id="galleryModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" class="img-fluid" alt="Galeria">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <!--Seção parceiros-->
+     <section class="parceiros-border">
+     <div class="parceiros-section">
+
+        <div class="subtitle">Nossos</div>
+        <h2 class="title">Parceiros</h2>
+        
+        <div class="logos-container">
+            <div class="logo-card premium">
+                <div class="logo-image">
+                    <img src="assets/images/BCI.png" alt="BCI Logo" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                </div>
+            </div>
+            
+            <div class="logo-card premium">
+                <div class="logo-image">
+                    <img src="assets/images/FDC.png" alt="Fundação Dom Cabral Logo" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                </div>
+            </div>
+        </div>
+     </div>
+     </section>
+    </main>
+
+    
+    <!-- Widget WhatsApp -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-button" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.951 3.325"/>
+            </svg>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <div class="avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.951 3.325"/>
+                    </svg>
+                </div>
+                <div class="info">
+                    <h4>WhatsApp</h4>
+                    <p>Como podemos ajudar?</p>
+                </div>
+                <button class="close-btn" onclick="toggleChat()">×</button>
+            </div>
+            
+            <div class="chat-body">
+                <div class="message">
+                    Olá! 👋<br>
+                    Como podemos ajudar?
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+     
+     <!-------------Secção do rodapé(FOOTER)------------>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/logo.png" alt="Logo da Empresa">
+            </div>
+            <p>&copy; 2025 - Todos os direitos reservados</p>
+            <a href="#" class="admin-link">Área Administrativa</a>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <!-- Link JavaScript para o menu móvel -->
+    <script src="js/js_compartilhado.js"></script>
+    <!-- Link JavaScript específico da página -->
+    <script src="js/index.js"></script>
+    
+</body>
+</html>

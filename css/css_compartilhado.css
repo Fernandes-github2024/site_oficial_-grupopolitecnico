@@ -1,0 +1,1176 @@
+/*
+    css_compartilhado.css - Estilos globais harmonizados com o logo do Grupo Politécnico
+*/
+
+:root {
+    /* Cores principais baseadas no logo */
+    --cor-primaria: #8B2635;        /* Vinho/Bordô do logo */
+    --cor-primaria-escura: #6B1D2A;  /* Versão mais escura */
+    --cor-primaria-clara: #A63446;   /* Versão mais clara */
+    --cor-dourada: #D4A574;         /* Dourado/Bege do logo */
+    --cor-dourada-clara: #E8C49A;   /* Dourado mais claro */
+    --cor-cinza: #8E8E93;           /* Cinza do logo */
+    --cor-cinza-claro: #F2F2F7;     /* Cinza muito claro */
+    --cor-cinza-medio: #C7C7CC;     /* Cinza médio */
+    --cor-texto-escuro: #1D1D1F;    /* Texto principal */
+    --cor-texto-medio: #48484A;     /* Texto secundário */
+}
+
+* {
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-texto-escuro);
+    line-height: 1.6;
+ }
+
+
+
+
+
+/* Estilos da barra de navegação */
+.navbar {
+/* Barra de navegação com backdrop harmonizado */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(139, 38, 53, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.navbar-container {
+/* Container centralizado da navbar */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 70px;
+}
+
+.logo {
+/* Logo do grupo (imagem e texto) */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(139, 38, 53, 0.2));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-text .grupo {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--cor-cinza);
+    text-transform: uppercase;
+    margin-bottom: 0.5px;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.logo-text .politecnico {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    letter-spacing: 0.05em;
+    position: relative;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+.logo-text .politecnico::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-dourada));
+    transition: width 0.4s ease;
+}
+
+.logo:hover .logo-text .politecnico::after {
+    width: 100%;
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--cor-texto-escuro);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link:hover {
+    color: var(--cor-primaria);
+    background: rgba(139, 38, 53, 0.1);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    color: var(--cor-primaria);
+    background: linear-gradient(135deg, rgba(139, 38, 53, 0.15), rgba(212, 165, 116, 0.1));
+}
+
+.nav-link.dropdown-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    color: var(--cor-dourada);
+}
+
+.dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(139, 38, 53, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    min-width: 250px;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cor-cinza);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--cor-texto-escuro);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+    background: linear-gradient(90deg, rgba(139, 38, 53, 0.05), rgba(212, 165, 116, 0.05));
+    border-left-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.dropdown-item-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-cinza);
+    transition: color 0.3s ease;
+}
+
+.dropdown-item:hover .dropdown-item-icon {
+    color: var(--cor-dourada);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cor-cinza-medio), transparent);
+    margin: 0.5rem 1.5rem;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+    color: white !important;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 38, 53, 0.4);
+    background: linear-gradient(135deg, var(--cor-primaria-escura), var(--cor-primaria));
+    border-color: var(--cor-dourada);
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--cor-cinza);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover span {
+    background: var(--cor-primaria);
+}
+
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: var(--cor-primaria);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--cor-primaria);
+}
+
+/* Demo content com cores harmonizadas */
+.demo-content {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.demo-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+    text-shadow: 2px 2px 4px rgba(139, 38, 53, 0.3);
+}
+
+.demo-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(139, 38, 53, 0.2);
+}
+
+/* Responsividade mantida com as novas cores */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .navbar-container {
+        padding: 0 1.5rem;
+        max-width: 100%;
+    }
+
+    .nav-menu {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.9rem;
+    }
+
+    .logo-text .grupo {
+        font-size: 0.65rem;
+    }
+
+    .logo-text .politecnico {
+        font-size: 1rem;
+    }
+
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .dropdown-menu {
+        min-width: 220px;
+    }
+
+    .demo-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .demo-content {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .navbar-container {
+        padding: 0 1.5rem;
+        height: 65px;
+    }
+
+    .logo-text .grupo {
+        font-size: 0.6rem;
+    }
+
+    .logo-text .politecnico {
+        font-size: 0.95rem;
+    }
+
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 1.5rem 0;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 10px 30px rgba(139, 38, 53, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        border-top: 2px solid var(--cor-dourada);
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        margin: 0.5rem 2rem;
+        text-align: center;
+        padding: 1rem 1.5rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        transform: none;
+        box-shadow: none;
+        background: var(--cor-cinza-claro);
+        margin: 0;
+        border-radius: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: 500px;
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .demo-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .demo-content {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .navbar-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+
+    .logo-text .grupo {
+        font-size: 0.55rem;
+    }
+
+    .logo-text .politecnico {
+        font-size: 0.85rem;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 10px 30px rgba(139, 38, 53, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        border-top: 2px solid var(--cor-dourada);
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0;
+        font-size: 0.95rem;
+    }
+
+    .cta-button {
+        margin: 0.5rem 1.5rem;
+        text-align: center;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        transform: none;
+        box-shadow: none;
+        background: var(--cor-cinza-claro);
+        margin: 0;
+        border-radius: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: 500px;
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dropdown-item {
+        padding: 0.6rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .demo-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .demo-content p {
+        font-size: 1rem;
+    }
+
+    .demo-content {
+        padding: 2.5rem 1rem;
+    }
+}
+
+
+
+
+
+/* Estilos para o rodapé */
+.footer {
+    background-color: var(--cor-primaria-escura);
+    /* Cor de fundo que combina com o bordô do logo */
+    color: rgba(255,255,255,0.9);
+    /* Cor do texto */
+    padding: 20px 0;
+    /* Espaçamento */
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    /* Ajuste automático para dispositivos menores */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Alinhamento vertical para dispositivos menores */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para o conteúdo do rodapé */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para o logo no rodapé */
+.footer-logo {
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    max-height: 80px;
+    /* Ajuste a altura máxima conforme necessário */
+    width: auto;
+}
+
+.footer-content p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+
+/* Estilo para o link administrativo */
+.admin-link {
+    color: rgba(255, 255, 255, 0.5);
+    /* Texto semi-transparente */
+    font-size: 0.8rem;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.admin-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+    /* Fica mais visível ao passar o mouse */
+}
+
+/* Ajuste para dispositivos menores */
+@media (max-width: 480px) {
+    .admin-link {
+        font-size: 0.7rem;
+    }
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .footer-content p {
+        font-size: 1rem;
+    }
+
+    .footer-content {
+        padding: 0 10px;
+    }
+
+    .footer-logo img {
+        max-height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content p {
+        font-size: 0.9rem;
+    }
+
+    .footer {
+        padding: 15px 0;
+    }
+
+    .footer-logo img {
+        max-height: 50px;
+    }
+}
+
+
+
+
+/* Estilos para a seção de título para as paginas */
+
+.titulo_section {
+    width: 100%;
+    height: 200px;
+    background-color: var(--cor-primaria-escura);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    width: 80%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe Script', cursive;
+}
+
+.titulo h1 {
+    font-size: 2.2rem;
+    color: #F2A25C;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries para Responsividade */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .titulo_section {
+        height: 180px;
+    }
+    
+    .titulo {
+        width: 85%;
+        height: 90px;
+    }
+    
+    .titulo h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1.2px;
+    }
+}
+
+/* Tablets pequenos e smartphones grandes (480px - 768px) */
+@media (max-width: 768px) {
+    .titulo_section {
+        height: 150px;
+    }
+    
+    .titulo {
+        width: 90%;
+        height: 80px;
+    }
+    
+    .titulo h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Smartphones (320px - 480px) */
+@media (max-width: 480px) {
+    .titulo_section {
+        height: 120px;
+    }
+    
+    .titulo {
+        width: 95%;
+        height: 70px;
+    }
+    
+    .titulo h1 {
+        font-size: 1.4rem;
+        letter-spacing: 0.8px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Smartphones muito pequenos (até 320px) */
+@media (max-width: 320px) {
+    .titulo_section {
+        height: 100px;
+    }
+    
+    .titulo {
+        width: 98%;
+        height: 60px;
+    }
+    
+    .titulo h1 {
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+
+
+
+
+/* Estilização da seção build section */
+.build-section {
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.construction-message {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.construction-message i {
+    font-size: 3rem;
+    color: var(--cor-primaria-escura);
+    margin-bottom: 15px;
+}
+
+.construction-message h2 {
+    font-size: 2rem;
+    color: var(--cor-primaria-escura);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.construction-message p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+
+/* Media Queries */
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    .build-section {
+        padding: 40px 15px;
+    }
+
+    .construction-message {
+        padding: 25px;
+        max-width: 500px;
+    }
+
+    .construction-message i {
+        font-size: 2.5rem;
+    }
+
+    .construction-message h2 {
+        font-size: 1.8rem;
+    }
+
+    .construction-message p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Para telas menores que 576px */
+@media (max-width: 576px) {
+    .build-section {
+        padding: 30px 10px;
+    }
+
+    .construction-message {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .construction-message i {
+        font-size: 2rem;
+    }
+
+    .construction-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .construction-message p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Para telas menores que 400px */
+@media (max-width: 400px) {
+    .construction-message {
+        padding: 15px;
+    }
+
+    .construction-message i {
+        font-size: 1.8rem;
+    }
+
+    .construction-message h2 {
+        font-size: 1.3rem;
+    }
+
+    .construction-message p {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+/* Estilos para a barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6D1C2C;
+    border-radius: 10px;
+    border: 2px solid #f5f5f5;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #F2A25C;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #f5f5f5;
+}
+
+/* Estilos para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #6D1C2C #f5f5f5;
+    scroll-behavior: smooth;
+    /* Rolagem suave para toda a página */
+}
+
+/* Adicionar efeito de rolagem suave para todos os navegadores */
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+
+
+/* Estilos para o Widget do WhatsApp */
+ /* Widget WhatsApp */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-button svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Chat Box */
+        .chat-box {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: scale(0);
+            transform-origin: bottom left;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .chat-box.active {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .chat-header {
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-header .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-header .avatar svg {
+            width: 25px;
+            height: 25px;
+            fill: #25D366;
+        }
+
+        .chat-header .info h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .chat-header .info p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .close-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .chat-body {
+            padding: 20px;
+        }
+
+        .message {
+            background: #f0f0f0;
+            padding: 12px 15px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input input:focus {
+            border-color: #25D366;
+        }
+
+        .send-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #1db954;
+            transform: scale(1.1);
+        }
+
+        .send-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chat-box {
+                width: calc(100vw - 40px);
+                max-width: 320px;
+            }
+            
+            .whatsapp-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .whatsapp-button svg {
+                width: 30px;
+                height: 30px;
+            }
+        }

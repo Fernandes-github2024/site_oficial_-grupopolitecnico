@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o arquivo CSS compartilhado -->
+    <link rel="stylesheet" href="css/css_compartilhado.css">
+    <!-- Link para o Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Galeria</title>
+
+    <style>
+:root {
+    --cor-primaria: #8B2635;        
+    --cor-primaria-escura: #6B1D2A;  
+    --cor-primaria-clara: #A63446;   
+    --cor-dourada: #D4A574;         
+    --cor-dourada-clara: #E8C49A;   
+    --cor-cinza: #8E8E93;           
+    --cor-cinza-claro: #F2F2F7;     
+    --cor-cinza-medio: #C7C7CC;     
+    --cor-texto-escuro: #1D1D1F;    
+    --cor-texto-medio: #48484A;     
+}
+
+.gallery-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, var(--cor-cinza-claro) 0%, #ffffff 100%);
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.gallery-description {
+    text-align: center;
+    color: var(--cor-texto-medio);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(139, 38, 53, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Modal Simples */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--cor-texto-medio);
+}
+
+.modal-close:hover {
+    color: var(--cor-primaria);
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-top: 20px;
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Desktop Grande (1400px+) */
+@media (min-width: 1400px) {
+    .gallery-container {
+        max-width: 1400px;
+        padding: 0 15px;
+    }
+    
+    .gallery-title {
+        font-size: 2.2rem;
+    }
+    
+    .gallery-description {
+        font-size: 1.2rem;
+        max-width: 700px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+    
+    .gallery-item img {
+        height: 280px;
+    }
+}
+
+/* Desktop Médio (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .gallery-container {
+        padding: 0 15px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .gallery-item img {
+        height: 260px;
+    }
+}
+
+/* Tablet Landscape (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .gallery-section {
+        padding: 40px 0;
+    }
+    
+    .gallery-title {
+        font-size: 2.2rem;
+    }
+    
+    .gallery-description {
+        font-size: 1.05rem;
+        margin-bottom: 50px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+    }
+    
+    .gallery-item img {
+        height: 240px;
+    }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .gallery-section {
+        padding: 35px 0;
+    }
+    
+    .gallery-title {
+        font-size: 2.1rem;
+    }
+    
+    .gallery-description {
+        font-size: 1rem;
+        margin-bottom: 45px;
+        max-width: 500px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+    }
+    
+    .gallery-item img {
+        height: 220px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 8% auto;
+    }
+    
+    .modal-image {
+        max-height: 60vh;
+    }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .gallery-section {
+        padding: 30px 0;
+    }
+    
+    .gallery-container {
+        padding: 0 15px;
+    }
+    
+    .gallery-title {
+        font-size: 1.9rem;
+    }
+    
+    .gallery-title::after {
+        width: 50px;
+        height: 2px;
+        margin: 15px auto;
+    }
+    
+    .gallery-description {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+        max-width: 450px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 15px;
+    }
+    
+    .gallery-item {
+        border-radius: 10px;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .modal-close {
+        font-size: 1.8rem;
+        top: 12px;
+        right: 15px;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+        margin-top: 15px;
+    }
+}
+
+/* Mobile Portrait (até 575px) */
+@media (max-width: 575px) {
+    .gallery-section {
+        padding: 25px 0;
+    }
+    
+    .gallery-container {
+        padding: 0 15px;
+    }
+    
+    .gallery-title {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+    
+    .gallery-title::after {
+        width: 40px;
+        height: 2px;
+        margin: 12px auto;
+    }
+    
+    .gallery-description {
+        font-size: 0.9rem;
+        margin-bottom: 35px;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .gallery-item {
+        border-radius: 8px;
+    }
+    
+    .gallery-item img {
+        height: 180px;
+    }
+    
+    .gallery-item:hover {
+        transform: translateY(-4px);
+    }
+    
+    .modal-content {
+        width: 98%;
+        margin: 15% auto;
+        padding: 12px;
+        border-radius: 10px;
+    }
+    
+    .modal-close {
+        font-size: 1.5rem;
+        top: 10px;
+        right: 12px;
+    }
+    
+    .modal-image {
+        max-height: 50vh;
+        border-radius: 8px;
+    }
+    
+    .modal-title {
+        font-size: 1.2rem;
+        margin-top: 12px;
+    }
+}
+
+/* Mobile Pequeno (até 400px) */
+@media (max-width: 400px) {
+    .gallery-section {
+        padding: 20px 0;
+    }
+    
+    .gallery-container {
+        padding: 0 15px;
+    }
+    
+    .gallery-title {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-description {
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+    }
+    
+    .gallery-grid {
+        gap: 10px;
+    }
+    
+    .gallery-item img {
+        height: 160px;
+    }
+    
+    .modal-content {
+        width: 100%;
+        margin: 20% auto;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    
+    .modal-image {
+        max-height: 40vh;
+    }
+    
+    .modal-title {
+        font-size: 1.1rem;
+        margin-top: 10px;
+    }
+}
+
+/* Ajustes para orientação landscape em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+    .gallery-section {
+        padding: 15px 0;
+    }
+    
+    .gallery-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .gallery-description {
+        margin-bottom: 25px;
+    }
+    
+    .gallery-item img {
+        height: 140px;
+    }
+    
+    .modal-content {
+        margin: 2% auto;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+    
+    .modal-image {
+        max-height: 70vh;
+    }
+}
+    </style>
+</head>
+<body>
+     <!-- Início da barra de navegação principal -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo do Grupo Politécnico -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo.png" alt="Grupo Politécnico Logo">
+                </div>
+                <div class="logo-text">
+                    <span class="grupo">GRUPO</span>
+                    <span class="politecnico">POLITÉCNICO</span>
+                </div>
+            </a>
+
+            <!-- Botão para abrir o menu no mobile (três linhas) -->
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu de navegação principal -->
+            <ul class="nav-menu" id="navMenu">
+                <!-- Item Home -->
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Início</a>
+                </li>
+
+                <!-- Dropdown Unidades -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event, this); toggleMobileDropdown(event, this)">
+                        Unidades<span class="dropdown-arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Ensino</div>
+                        <!-- Opções de Ensino -->
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏛️</div>
+                            Universidades
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏫</div>
+                            Institutos
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🎓</div>
+                            Escolas Secundárias
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">📚</div>
+                            Centro Educativo
+                        </a>
+                        
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header">Outras Áreas</div>
+                        <!-- Outras áreas do grupo -->
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">💻</div>
+                            IST - Tecnologia
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🤝</div>
+                            FUNDE - Social
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">🏃</div>
+                            Clube de Desporto
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon">📊</div>
+                            IPC - Projetos
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Dropdown Instituição -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event, this); toggleMobileDropdown(event, this)">
+                        Instituição<span class="dropdown-arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <!-- Opções da instituição -->
+                        <a href="sobre.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">ℹ️</div>
+                            Sobre nós
+                        </a>
+                        <a href="estrutura.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">🌐</div>
+                            Estrutura Orgânica
+                        </a>
+                        <a href="galeria.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">🖼️</div>
+                            Nossa Galeria
+                        </a>
+                        <a href="emprego.html" class="dropdown-item">
+                            <div class="dropdown-item-icon">💼</div>
+                            Ofertas de Emprego
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Item Eventos -->
+                <li class="nav-item">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                </li>
+
+                <!-- Botão de chamada para Notícias -->
+                <li class="nav-item">
+                    <a href="notícias.html" class="nav-link cta-button">Notícias</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Fim da barra de navegação principal -->
+
+
+    <main>
+
+
+    <div class="titulo_section">
+        <div class="titulo">
+            <h1>Galeria de Imagens</h1>
+        </div>
+    </div>
+   <!-- Seção de Galeria -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <p class="gallery-description">Explore nossa coleção de fotos que capturam a essência do Grupo Politécnico.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop', 'Cerimônia de Formatura 2024')">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop" alt="Imagem 1">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop', 'Conferência Anual')">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="Imagem 2">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop', 'Reunião Estratégica')">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop" alt="Imagem 3">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&h=600&fit=crop', 'Workshop de Inovação')">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&h=300&fit=crop" alt="Imagem 4">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=600&fit=crop', 'Laboratório de Pesquisa')">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop" alt="Imagem 5">
+                </div>
+                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&h=600&fit=crop', 'Campus Universitário')">
+                    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=300&fit=crop" alt="Imagem 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <h3 id="modalTitle" class="modal-title"></h3>
+        </div>
+    </div>
+
+    </main>
+
+
+      <!-- Widget WhatsApp -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-button" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.951 3.325"/>
+            </svg>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <div class="avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.951 3.325"/>
+                    </svg>
+                </div>
+                <div class="info">
+                    <h4>WhatsApp</h4>
+                    <p>Como podemos ajudar?</p>
+                </div>
+                <button class="close-btn" onclick="toggleChat()">×</button>
+            </div>
+            
+            <div class="chat-body">
+                <div class="message">
+                    Olá! 👋<br>
+                    Como podemos ajudar?
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+     <!-------------Secção do rodapé(FOOTER)------------>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/logo.png" alt="Logo da Empresa">
+            </div>
+            <p>&copy; 2025 - Todos os direitos reservados</p>
+            <a href="#" class="admin-link">Área Administrativa</a>
+        </div>
+    </footer>
+    
+    
+    <!-- Scripts -->
+    <!-- Script para o modal da galeria -->
+    <script>
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalImage.src = imageSrc;
+            modalTitle.textContent = title;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal ao clicar fora da imagem
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+    <script src="js/js_compartilhado.js"></script>
+
+</body>
+</html>
