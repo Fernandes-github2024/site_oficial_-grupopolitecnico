@@ -10,6 +10,283 @@
     <!-- Link para o Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Estrutura Orgânica</title>
+
+    <style>
+        /* Estilos para a página de estrutura orgânica */
+         :root {
+            /* Cores principais baseadas no logo */
+            --cor-primaria: #8B2635;
+            --cor-primaria-escura: #6B1D2A;
+            --cor-primaria-clara: #A63446;
+            --cor-dourada: #D4A574;
+            --cor-dourada-clara: #E8C49A;
+            --cor-cinza: #8E8E93;
+            --cor-cinza-claro: #F2F2F7;
+            --cor-cinza-medio: #C7C7CC;
+            --cor-texto-escuro: #1D1D1F;
+            --cor-texto-medio: #48484A;
+        }
+
+
+        .download-buttons button{
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .organograma-section {
+            padding: 80px 15px;
+            background: linear-gradient(135deg, var(--cor-cinza-claro) 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .organograma-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .organograma-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cor-primaria), var(--cor-dourada));
+        }
+
+        .organograma-image-wrapper {
+            position: relative;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .organograma-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .organograma-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .image-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.95);
+            border: 2px solid var(--cor-primaria-clara);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: var(--cor-primaria);
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            background: var(--cor-primaria);
+            color: white;
+            border-color: var(--cor-primaria);
+            transform: scale(1.1);
+        }
+
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            border: 2px dashed #e2e8f0;
+            margin-top: 30px;
+        }
+
+        .download-info {
+            text-align: center;
+        }
+
+        .download-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .download-description {
+            color: #718096;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 38, 53, 0.4);
+        }
+
+        .download-btn.secondary {
+            background: linear-gradient(135deg, var(--cor-dourada), var(--cor-dourada-clara));
+            color: var(--cor-texto-escuro);
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .download-btn.secondary:hover {
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .image-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--cor-cinza-claro) 0%, #ffffff 100%);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--cor-texto-medio);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95%;
+            max-height: 95%;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-close:hover {
+            opacity: 0.7;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+
+            .organograma-section {
+                padding: 20px 15px;
+           }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .organograma-container {
+                padding: 20px;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .image-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
         <!-- Início da barra de navegação principal -->
@@ -134,15 +411,69 @@
         </div>
     </div>
 
-    <section class="build-section">
-        <div class="build-container">
-            <div class="construction-message">
-                <i class="fas fa-tools"></i>
-                <h2>Em Construção</h2>
-                <p>Estamos trabalhando para trazer novidades em breve. Fique atento!</p>
+    <section class="organograma-section">
+        <div class="container">
+            <div class="organograma-container">
+                <div class="organograma-image-wrapper">
+                    <div class="image-controls">
+                        <button class="control-btn" onclick="openModal()" title="Visualizar em tela cheia">
+                            🔍
+                        </button>
+                        <button class="control-btn" onclick="downloadImage()" title="Baixar imagem">
+                            ⬇️
+                        </button>
+                    </div>
+                    
+                    <!-- SUBSTITUA O SRC PELA SUA IMAGEM -->
+                    <img 
+                        src="assets/images/organograma.jpg" 
+                        alt="Organograma Grupo IPS, Lda" 
+                        class="organograma-image"
+                        id="orgImage"
+                        onclick="openModal()"
+                    >
+                </div>
+
+                <div class="image-info">
+                    <div>
+                        <strong>Grupo IPS, Lda</strong> - Organograma Institucional
+                    </div>
+                    <div>
+                        Actualização: 20-11-18
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <div class="download-info">
+                        <h3 class="download-title">Baixar Organograma</h3>
+                        <p class="download-description">
+                            Faça o download do organograma em diferentes formatos para uso interno ou apresentações
+                        </p>
+                    </div>
+                    
+                    <div class="download-buttons">
+                        <button class="download-btn" onclick="downloadImage('png')">
+                            🖼️ Baixar PNG
+                        </button>
+                        <button class="download-btn secondary" onclick="downloadImage('pdf')">
+                            📄 Baixar PDF
+                        </button>
+                        <button class="download-btn" onclick="downloadImage('jpg')">
+                            🖼️ Baixar JPG
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal para visualização em tela cheia -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="Organograma">
+        </div>
+    </div>
 
     </main>
 
@@ -205,6 +536,153 @@
     <!-- Scripts -->
     <!-- Link JavaScript para o menu móvel -->
     <script src="js/js_compartilhado.js"></script>
+
+     <!-- Link Java script para a seção organograma -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+     <script>
+        // Função para abrir modal de visualização
+        function openModal() {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const orgImage = document.getElementById('orgImage');
+            
+            modal.style.display = 'block';
+            modalImage.src = orgImage.src;
+            
+            // Previne scroll do body
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Função para download da imagem
+        function downloadImage(format = 'png') {
+            const image = document.getElementById('orgImage');
+            const link = document.createElement('a');
+            
+            // Se for PDF, usar uma abordagem diferente
+            if (format === 'pdf') {
+               generatePDF();
+                return;
+            }
+            
+            // Para PNG/JPG, criar canvas e converter
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Aguardar a imagem carregar completamente
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                
+                // Se for JPG, usar fundo branco
+                if (format === 'jpg') {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                ctx.drawImage(img, 0, 0);
+                
+                // Converter para o formato desejado
+                const mimeType = format === 'jpg' ? 'image/jpeg' : 'image/png';
+                const dataURL = canvas.toDataURL(mimeType, 0.9);
+                
+                // Fazer download
+                link.href = dataURL;
+                link.download = `organograma-grupo-ips.${format}`;
+                link.click();
+            };
+            
+            img.src = image.src;
+        }
+
+        // Fechar modal com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Animação de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const image = document.getElementById('orgImage');
+            image.style.opacity = '0';
+            image.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                image.style.transition = 'all 0.8s ease-out';
+                image.style.opacity = '1';
+                image.style.transform = 'scale(1)';
+            }, 500);
+        });
+
+
+
+          // Função para gerar PDF
+        function generatePDF() {
+            const image = document.getElementById('orgImage');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF();
+                
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
+                img.onload = function() {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+                        
+                        const imgData = canvas.toDataURL('image/jpeg', 0.9);
+                        
+                        // Calcular dimensões para o PDF (A4)
+                        const pdfWidth = pdf.internal.pageSize.getWidth();
+                        const pdfHeight = pdf.internal.pageSize.getHeight();
+                        
+                        const imgWidth = img.width;
+                        const imgHeight = img.height;
+                        
+                        // Calcular proporções para manter aspect ratio
+                        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                        const scaledWidth = imgWidth * ratio;
+                        const scaledHeight = imgHeight * ratio;
+                        
+                        // Centralizar a imagem
+                        const x = (pdfWidth - scaledWidth) / 2;
+                        const y = (pdfHeight - scaledHeight) / 2;
+                        
+                        pdf.addImage(imgData, 'JPEG', x, y, scaledWidth, scaledHeight);
+                        pdf.save('organograma-grupo-ips.pdf');
+                        
+                        showStatus('Download PDF realizado com sucesso!');
+                    } catch (error) {
+                        showStatus(`Erro ao gerar PDF: ${error.message}`, true);
+                    }
+                };
+                
+                img.onerror = function() {
+                    showStatus('Erro ao carregar imagem para PDF!', true);
+                };
+                
+                img.src = image.src;
+                
+            } catch (error) {
+                showStatus(`Erro ao inicializar PDF: ${error.message}`, true);
+            }
+        }
+    </script>
     
 </body>
 </html>
